@@ -41,7 +41,8 @@ export const getPost = (subfolder:string, slug:string) => {
   
   const matterResult = matter(content)
   return {...matterResult,
-    toc : genToc(matterResult.content),}
+    toc : genToc(matterResult.content),
+  }
 }
 
 
