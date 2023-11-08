@@ -12,7 +12,7 @@ import './rainbow.css';
 export async function generateStaticParams() {
       const posts = getAllPostMetadata();
     return posts.map((post) => ({
-      slug: post.slug,
+      slug: post.slug.replaceAll(" ","_"),
     folder: post.folder,
     }))
   }
