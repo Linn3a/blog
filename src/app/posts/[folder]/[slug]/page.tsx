@@ -10,16 +10,16 @@ import remarkCallout from 'remark-callout';
 import './rainbow.css';
 import { postMetadata } from '../../../../../components/postMetadata';
 
-export const getStaticParams = async () => {
-    const posts = getAllPostMetadata();
+// export const getStaticParams = async () => {
+//     const posts = getAllPostMetadata();
 
-    return posts.map((post:postMetadata) => {
-        return {
-            folder: post.folder,
-            slug: post.slug.replaceAll(" ","_"),
-        }
-    })
-}
+//     return posts.map((post:postMetadata) => {
+//         return {
+//             folder: post.folder,
+//             slug: post.slug.replaceAll(" ","_"),
+//         }
+//     })
+// }
 
 const Post = async (props:any) => {
     const subfolder = props.params.folder;
