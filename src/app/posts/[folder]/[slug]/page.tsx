@@ -8,10 +8,16 @@ import remarkGfm from 'remark-gfm'
 import remarkCallout from 'remark-callout';
 
 import './rainbow.css';
-import { postMetadata } from '../../../../../components/postMetadata';
+
+export async function generateStaticParams() {
+      const posts = getAllPostMetadata();
+    return posts.map((post) => ({
+      slug: post.slug,
+    folder: post.folder,
+    }))
+  }
 
 // export const getStaticParams = async () => {
-//     const posts = getAllPostMetadata();
 
 //     return posts.map((post:postMetadata) => {
 //         return {
