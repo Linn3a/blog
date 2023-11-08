@@ -51,7 +51,6 @@ export const getAllPostMetadata = ():postMetadata[] => {
     const folders = fs.readdirSync(folder)
     const posts:postMetadata[] = []
     folders.forEach((subfolder) => {
-      console.log('folder', subfolder);
       const files = fs.readdirSync(`${folder}${subfolder}/`)
       const markdownFiles = files.filter((file) => file.endsWith(".md"))
     markdownFiles.forEach((fileName) => {
@@ -67,7 +66,7 @@ export const getAllPostMetadata = ():postMetadata[] => {
         tags: matterResult.data.tags,
         toc: toc,
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),
-        folder: folder,
+        folder: subfolder,
       })
     })  
 })

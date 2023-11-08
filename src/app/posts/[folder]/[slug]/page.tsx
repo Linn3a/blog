@@ -11,21 +11,13 @@ import './rainbow.css';
 
 export async function generateStaticParams() {
       const posts = getAllPostMetadata();
+    
     return posts.map((post) => ({
       slug: post.slug.replaceAll(" ","_"),
-    folder: post.folder,
+      folder: post.folder,
     }))
   }
 
-// export const getStaticParams = async () => {
-
-//     return posts.map((post:postMetadata) => {
-//         return {
-//             folder: post.folder,
-//             slug: post.slug.replaceAll(" ","_"),
-//         }
-//     })
-// }
 
 const Post = async (props:any) => {
     const subfolder = props.params.folder;
