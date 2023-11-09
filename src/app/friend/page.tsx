@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getFriends } from "../../../components/frend";
 
 const Friend = () => {
@@ -12,9 +11,9 @@ const Friend = () => {
             <h1 className="text-lg font-bold text-sky-900 my-2">{friend.name}</h1>
             
             <p className="my-1 text-sky-800">{friend.desc}</p>
-            <Link href = {friend.link} className="text-sky-800 hover:underline">
+            <a href = {friend.link} className="text-sky-800 hover:underline">
                 link 🙌
-                </Link>
+                </a>
 
             </div>
         ))}
