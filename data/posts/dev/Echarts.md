@@ -65,7 +65,7 @@ import ReactEcharts from "echarts-for-react"
 import echarts from "echarts";
 ```
 
-配置option
+配置option[^1]
 
 ```js
 const option: ECOption = {
@@ -98,3 +98,4 @@ const option: ECOption = {
         )
 ```
 
+[^1]: [Echarts](https://echarts.apache.org/zh/index.html)

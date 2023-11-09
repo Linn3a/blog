@@ -23,6 +23,8 @@ const Post = async (props:any) => {
     const subfolder = props.params.folder;
     const slug = props.params.slug;
     const post = getPost(subfolder, slug);
+    console.log("post",post);
+    
     
     return (
         <div>
@@ -30,11 +32,11 @@ const Post = async (props:any) => {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"/>
             </head>       
         <div className='flex flex-col justify-between h-full'> 
-            <article className=" p-2 h-1/2 rounded-md  w-2/3 mx-auto mb-4  prose max-w-none prose-a:text-sky-800">
+            <article className=" p-2 h-1/2 rounded-md  w-2/3 mx-auto mb-4  prose max-w-none prose-a:text-sky-800 ">
             <Markdown 
             remarkPlugins={[remarkGfm]}>{post.toc}</Markdown>
             </article>
-            <article className="prose w-2/3 max-w-none lg:prose-base mx-auto">
+            <article className="prose w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base ">
            <Markdown
            components={{
             h1(props) {
@@ -68,6 +70,7 @@ const Post = async (props:any) => {
             rehypeRaw,
             rehypeHighlight,
         ]}
+        key="content"
     
           >{post.content}</Markdown>
 

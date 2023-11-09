@@ -33,7 +33,7 @@ const genToc = (content:string) => {
 }
 
 export const getPost = (subfolder:string, slug:string) => {
-  const folder = "posts/"
+  const folder = "data/posts/"
   slug = slug.replaceAll("_", " ")
 
   const files = `${folder}${subfolder}/${slug}.md`
@@ -47,7 +47,7 @@ export const getPost = (subfolder:string, slug:string) => {
 
 
 export const getAllPostMetadata = ():postMetadata[] => {
-    const folder = "posts/"
+    const folder = "data/posts/"
     // 找下面的文件夹
     const folders = fs.readdirSync(folder)
     const posts:postMetadata[] = []
@@ -76,7 +76,7 @@ export const getAllPostMetadata = ():postMetadata[] => {
 
 
 export const getPostMetadataByFolder = (folder:string):postMetadata[] => {
-  const _folder = `posts/${folder}/`
+  const _folder = `data/posts/${folder}/`
   const files = fs.readdirSync(_folder)
   const markdownFiles = files.filter((file) => file.endsWith(".md"))
   const posts = markdownFiles.map((fileName) => {

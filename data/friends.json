@@ -1,0 +1,14 @@
+[
+    {
+        "name":"testName",
+        "avatar":"https://em-content.zobj.net/source/microsoft/379/peace-symbol_262e-fe0f.png",
+        "desc":"一个描述",
+        "link":"http://www.baidu.com"
+    },
+    {
+        "name":"名字",
+        "avatar":"https://em-content.zobj.net/source/microsoft/379/alarm-clock_23f0.png",
+        "desc":"描述",
+        "link":"http://www.baidu.com"
+    }
+]
