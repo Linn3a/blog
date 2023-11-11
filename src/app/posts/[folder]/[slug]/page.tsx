@@ -57,7 +57,7 @@ const Post = async (props:any) => {
            components={{
             h1(props) {
                 const {node,children,...rest} = props
-                return <h1 id={children?.toString().toLowerCase().replaceAll(" ","-")} {...props} />
+                return <h1 id={children?.toString().toLowerCase().replaceAll(" ","-")}  children={children?.toString()+" ✏️"} {...rest} />
             },
             h2(props) {
                 const {node,children,...rest} = props
