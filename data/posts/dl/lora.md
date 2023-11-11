@@ -24,8 +24,11 @@ tags: [dl]
 ## 怎么用
 
 前向过程中$\Delta W=BA$
+
 初始化时将B初始化为0，A随机高斯初始化
+
 $h=W_0x+\frac{\alpha }{r}\Delta Wx=W_0 x+\frac{\alpha}{r}BAx$
+
 $\alpha$是常数，$r$是超参
 
 ## 在哪些层使用
