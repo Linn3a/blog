@@ -1,3 +1,4 @@
+import { parseDate } from './parseDate';
 import { postMetadata } from "./postMetadata"
 import fs from "fs"
 import matter from "gray-matter"
@@ -50,7 +51,7 @@ export const getAllPostMetadata = ():postMetadata[] => {
     const folder = "data/posts/"
     // 找下面的文件夹
     const folders = fs.readdirSync(folder)
-    const posts:postMetadata[] = []
+    let posts:postMetadata[] = []
     folders.forEach((subfolder) => {
       const files = fs.readdirSync(`${folder}${subfolder}/`)
       const markdownFiles = files.filter((file) => file.endsWith(".md"))
@@ -63,13 +64,16 @@ export const getAllPostMetadata = ():postMetadata[] => {
         {
         title: matterResult.data.title,
         subtitle: matterResult.data.subtitle,
-        date: `${matterResult.data.date.getFullYear()}-${matterResult.data.date.getMonth()}-${matterResult.data.date.getDate()}`,
+        date: `${parseDate(matterResult.data.date).substring(0,10)}`,
         tags: matterResult.data.tags,
         toc: toc,
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),
         folder: subfolder,
       })
     })  
+})
+posts = posts.sort((a, b) => {
+  return -new Date(b.date).getTime() + new Date(a.date).getTime()
 })
     return posts;
 }
@@ -88,7 +92,7 @@ export const getPostMetadataByFolder = (folder:string):postMetadata[] => {
       return {
         title: matterResult.data.title,
         subtitle: matterResult.data.subtitle,
-        date: `${matterResult.data.date.getFullYear()}-${matterResult.data.date.getMonth()}-${matterResult.data.date.getDate()}`,
+        date: `${parseDate(matterResult.data.date).substring(0,10)}`,
         tags: matterResult.data.tags,
         toc: toc,
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),

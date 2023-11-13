@@ -17,9 +17,9 @@ export default function RootLayout({
 }) {
 
   const header = (
-    <header className='border-b-2 p-1 border-gray-200 h-12 mb-5 flex flex-row items-center justify-between'>
+    <header className='border-b p-1 border-gray-200 h-12 mb-5 flex flex-row items-center justify-between'>
    <Link href='/' className='text-xl'>Linnea's Blog ✍️</Link>
-    <div className='flex flex-row text-lg space-x-4'>
+    <div className='flex flex-row text-lg space-x-10'>
    <Link href='/posts/dl'>深度学习🤗</Link>
    <Link href='/posts/dev'>开发👩‍💻</Link>
    <Link href="/friend">友链😚</Link>
@@ -28,7 +28,7 @@ export default function RootLayout({
   )
 
   const footer = (
-    <footer className='h-10 mt-5 border-t-2 p-1 border-gray-200 text-center text-sm text-slate-400'>
+    <footer className='h-10 mt-5 border-t p-1 border-gray-200 text-center text-sm text-slate-400'>
       Developed by Linnea 🥳
     </footer>
   )
