@@ -52,7 +52,7 @@ const Post = async (props:any) => {
             <Markdown 
             remarkPlugins={[remarkGfm]}>{post.toc}</Markdown>
             </article>
-            <article className="prose w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base ">
+            <article className="prose w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base prose-blockquote:not-italic prose-blockquote:text-slate-700 prose-quoteless">
            <Markdown
            components={{
             h1(props) {
