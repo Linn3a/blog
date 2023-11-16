@@ -37,7 +37,7 @@ tags: [dl]
    并且，如果你对输出有额外的要求，也要指出，比如
    ```
     The output should be a list of strings, each string being a sentence.
-    ```
+   ```
 
 3. Few-shot prompting 提供成功执行任务的示例
    
@@ -59,14 +59,14 @@ tags: [dl]
     
     ``` 
     Your task is to perform the following actions:
-
+    
     - 1. ...
     - 2. ...
     - 3. ...
     ```
 2. 当你判断对错时，先“独立思考”
    
-   当你用GPT3来判断一道数学题的对错时，结果总是不那么好。但是如果你先让模型做这道题，得出自己的答案，再与正确答案进行比较，效果就会好很多。
+   当你用chatGPT来判断一道数学题的对错时，结果总是不那么好。但是如果你先让模型做这道题，得出自己的答案，再与正确答案进行比较，效果就会好很多。
    
 
 # 一个通用模板
