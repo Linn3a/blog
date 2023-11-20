@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  important: true,
   content: [
     './node_modules/pliny/**/*.js',
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',

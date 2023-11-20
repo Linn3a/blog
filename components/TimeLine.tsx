@@ -88,7 +88,7 @@ const  TimeLine = (props:{
             {events?.map(([month, event]) => 
 
             (<section className="w-5/6">
-                <div className="sticky top-0 bg-zinc-50 py-3 z-10 shadow-white">
+                <div className="sticky top-0 bg-white py-3 z-10 shadow-white">
                     <h2 className="group-date">
                         {month.toString()}
                     </h2>

@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html className='my-2 md:w-5/6 mx-auto font-sans '>
         {/* <body className={inter.className}> */}
-        <body className='bg-stone-50 flex flex-col min-h-screen'>
+        <body className='bg-white flex flex-col min-h-screen'>
         {header}
         <div className='flex-1'>
         {children}

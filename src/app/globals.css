@@ -16,6 +16,81 @@
 }
     
 
+@layer base
+{
+  blockquote,.callout {
+    @apply
+    border-none
+   pt-4 pb-2 rounded-lg shadow-sm
+} 
+   .callout > .callout-title {
+        @apply font-bold
+    }
+
+    blockquote.abstract,.callout {
+        @apply !bg-blue-100
+    }
+
+    blockquote.note,.callout {
+      @apply !bg-indigo-100
+    }
+
+    blockquote.info,.callout {
+      @apply !bg-green-100
+    }
+
+    blockquote.todo,.callout{
+        @apply !bg-emerald-50
+    }
+
+    blockquote.warning,.callout {
+        @apply !bg-amber-100
+
+    }
+
+    blockquote.danger,.callout {
+        @apply !bg-red-200
+    }
+
+    blockquote.tip,.callout {
+        @apply !bg-green-200
+
+    }
+
+    blockquote.success,.callout {
+        @apply !bg-lime-100
+
+    }
+
+    blockquote.fail,.callout {
+        @apply !bg-red-400
+
+    }
+
+    blockquote.question,.callout {
+        @apply !bg-yellow-100
+    }
+
+    blockquote.question > .callout-icon {
+        @apply !text-yellow-500
+    }
+
+    blockquote.bug,.callout {
+        @apply !bg-red-300
+    }
+
+    blockquote.quote,.callout {
+        @apply !bg-gray-100
+
+    }
+
+    blockquote.example,.callout {
+        @apply !bg-violet-100
+    }
+    
+}
+
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
