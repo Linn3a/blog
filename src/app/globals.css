@@ -13,81 +13,84 @@
     font-family: 'Noto Serif SC', serif;
     /* font-family: 'Lato'; */
   }
-}
+  .call {
     
-
-@layer base
-{
-  blockquote,.callout {
+    .callout {
     @apply
     border-none
    pt-4 pb-2 rounded-lg shadow-sm
-} 
+    } 
    .callout > .callout-title {
         @apply font-bold
     }
 
-    blockquote.abstract,.callout {
-        @apply !bg-blue-100
+    .abstract {
+        @apply !bg-orange-100
     }
 
-    blockquote.note,.callout {
-      @apply !bg-indigo-100
+    .abstract > .callout-icon {
+        @apply !text-orange-400
     }
 
-    blockquote.info,.callout {
+    .note {
+
+      @apply !bg-indigo-50
+    }
+
+    .info{
       @apply !bg-green-100
     }
 
-    blockquote.todo,.callout{
+    .todo{
         @apply !bg-emerald-50
     }
 
-    blockquote.warning,.callout {
+    .warning{
         @apply !bg-amber-100
 
     }
 
-    blockquote.danger,.callout {
+    .danger{
         @apply !bg-red-200
     }
 
-    blockquote.tip,.callout {
+    .tip{
         @apply !bg-green-200
 
     }
 
-    blockquote.success,.callout {
+    .success {
         @apply !bg-lime-100
 
     }
 
-    blockquote.fail,.callout {
+    .fail{
         @apply !bg-red-400
 
     }
 
-    blockquote.question,.callout {
+    .question{
         @apply !bg-yellow-100
     }
 
-    blockquote.question > .callout-icon {
+    .question > .callout-icon {
         @apply !text-yellow-500
     }
 
-    blockquote.bug,.callout {
+    .bug {
         @apply !bg-red-300
     }
 
-    blockquote.quote,.callout {
+    .quote {
         @apply !bg-gray-100
 
     }
 
-    blockquote.example,.callout {
+    .example {
         @apply !bg-violet-100
     }
     
+}
 }
 
 

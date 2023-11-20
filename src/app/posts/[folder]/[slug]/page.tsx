@@ -25,12 +25,11 @@ const Post = async (props:any) => {
     const slug = props.params.slug;
     const post = getPost(subfolder, slug);
     
-    
     return (
         <div>
         <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"/>
-            </head>       
+        </head>       
         <div className='flex flex-col justify-between h-full'> 
         <div className='bg-sky-50 p-4 w-4/5 mx-auto h-52 rounded-xl border border-slate-150
                         flex flex-col justify-around items-center
@@ -52,7 +51,8 @@ const Post = async (props:any) => {
             <Markdown 
             remarkPlugins={[remarkGfm]}>{post.toc}</Markdown>
             </article>
-            <article className="prose w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base prose-blockquote:not-italic prose-blockquote:text-slate-700 prose-quoteless">
+
+            <article className="prose w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base prose-blockquote:not-italic prose-blockquote:text-slate-700 prose-quoteless call">
            <Markdown
            components={{
             h1(props) {
