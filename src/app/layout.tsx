@@ -17,12 +17,12 @@ export default function RootLayout({
 }) {
 
   const header = (
-    <header className='border-b p-1 border-gray-200 h-12 mb-5 flex flex-row items-center justify-between'>
+    <header className='border-b px-2 lg:p-1 border-gray-200 h-12 mb-5 flex flex-row items-center justify-between'>
    <Link href='/' className='text-xl'>Linnea's Blog ✍️</Link>
     <div className='flex flex-row text-lg space-x-10'>
-   <Link href='/posts/dl'>深度学习🤗</Link>
-   <Link href='/posts/dev'>开发👩‍💻</Link>
-   <Link href="/friend">友链😚</Link>
+   <Link href='/posts/dl' className='flex flex-row'>深度学习<p className='hidden md:block'>🤗</p></Link>
+   <Link href='/posts/dev' className='flex flex-row'>开发<p className='hidden md:block'>👩‍💻</p></Link>
+   <Link href="/friend" className='flex flex-row'>友链<p className='hidden md:block'>😚</p></Link>
     </div>
     </header>
   )

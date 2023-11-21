@@ -46,13 +46,13 @@ const Post = async (props:any) => {
 
         </div>
         </div>
-            <article className="p-2 h-1/2 rounded-md  w-2/3 mx-auto mb-4  prose max-w-none prose-a:text-sky-800 prose-h2:text-sky-900 font-normal">
+            <article className="p-2 h-1/2 rounded-md  w-11/12 lg:w-2/3 mx-auto mb-4  prose max-w-none prose-a:text-sky-800 prose-h2:text-sky-900 font-normal">
             <h2>目录</h2>
             <Markdown 
             remarkPlugins={[remarkGfm]}>{post.toc}</Markdown>
             </article>
 
-            <article className="prose w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base prose-blockquote:not-italic prose-blockquote:text-slate-700 prose-quoteless call">
+            <article className="prose w-11/12 lg:w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base prose-blockquote:not-italic prose-blockquote:text-slate-700 prose-quoteless call">
            <Markdown
            components={{
             h1(props) {
