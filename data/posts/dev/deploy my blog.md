@@ -66,7 +66,7 @@ git push origin main
 
 改动一 从51行开始
 
-```shell
+```yaml
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -83,7 +83,7 @@ git push origin main
 
 next14不支持export，build之后会自动生成`./out`文件夹，所以可以在build之后直接部署
 
-```shell
+```yaml
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
