@@ -1,6 +1,6 @@
 ---
 title: 记录部署博客的经过
-subtitle: 用github actions部署nextjs项目，涉及workflow和github page
+subtitle: 用github actions部署next14项目
 date: 2023-11-21 20:33:00
 tags: [dev]
 ---
@@ -16,6 +16,8 @@ tags: [dev]
 > **更新**：
 >
 > 在升级为next14后发现原来的workflow脚本跑不了了🫥 所以这是一个更新版 
+> 
+> 关键词：`nextjs` `yarn` `github actions` `github pages` `nginx` 
 
 之前的博客不够轻量，为了满足课程要求加了很多不必要的功能。于是用`next js`写了一个静态的博客，想尝试一些CI/CD的解决方法，让更新不再那么负担。
 
