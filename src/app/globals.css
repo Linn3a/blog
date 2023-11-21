@@ -18,7 +18,7 @@
     .callout {
     @apply
     border-none
-   pt-4 pb-2 rounded-lg shadow-sm
+   pt-4 pb-2 rounded-lg shadow-sm pr-4
     } 
    .callout > .callout-title {
         @apply font-bold
@@ -55,7 +55,7 @@
     }
 
     .tip{
-        @apply !bg-green-200
+        @apply !bg-teal-50
 
     }
 
@@ -64,8 +64,8 @@
 
     }
 
-    .fail{
-        @apply !bg-red-400
+    .failure {
+        @apply !bg-red-200
 
     }
 
