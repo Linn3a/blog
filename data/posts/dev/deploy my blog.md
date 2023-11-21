@@ -1,7 +1,7 @@
 ---
 title: 记录部署博客的经过
 subtitle: 用github actions部署nextjs项目，涉及workflow和github page
-date: 2023-11-09 00:40:00
+date: 2023-11-21 20:33:00
 tags: [dev]
 ---
 
