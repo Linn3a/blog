@@ -45,3 +45,11 @@ transformer层的几个权重矩阵$W_k,W_q,W_v,W_o$
 >
 > [一篇详尽的讲解](https://zhuanlan.zhihu.com/p/618894919)
 
+> [!Tip] tip
+>
+> adgafg
+
+> [!Warning] warning
+>
+> vsd
+
