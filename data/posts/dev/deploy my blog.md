@@ -90,7 +90,7 @@ next14不支持export，build之后会自动生成`./out`文件夹，所以可�
         uses: actions/upload-pages-artifact@v2
 ```
 删除了以下两行
-```
+```yaml
       - name: Static HTML export with Next.js 
         run: ${{ steps.detect-package-manager.outputs.runner }} next export 
 ```
