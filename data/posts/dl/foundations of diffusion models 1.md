@@ -127,13 +127,13 @@ $\mu_\theta(x_t,t)=\frac{1}{\sqrt{\alpha_t}}(x_t-\frac{\beta_t}{\sqrt{1-\overlin
 
 训练过程如图：
 
-![DM1_1](images\image-20231124151419607.png)
+![DM1_1](/images/image-20231124151419607.png)
 
 每次从均匀分布中采样一个时间步t，从高斯分布中采样一个噪声$\epsilon$，最小化损失函数，直至模型收敛。
 
 ### 采样过程
 
-![DM1_2](images\image-20231124151512063.png)
+![DM1_2](/images/image-20231124151512063.png)
 
 采样过程时间步$t$从大到小，每次利用预测的噪音还原$x_{t-1}$时，需要加上额外的随机高斯噪音$\sigma_tz$
 
