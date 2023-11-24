@@ -31,14 +31,14 @@ const Post = async (props:any) => {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"/>
         </head>       
         <div className='flex flex-col justify-between h-full'> 
-        <div className='bg-sky-50 p-4 w-4/5 mx-auto h-52 rounded-xl border border-slate-150
+        <div className='bg-sky-50 p-6 w-4/5 mx-auto md:h-52 rounded-xl border border-slate-150
                         flex flex-col justify-around items-center
                         my-4'>
         <div className='text-4xl font-bold text-center my-2'>
             {post.data.title}
         </div>
      
-        <div className='text-sm text-slate-500'>
+        <div className='text-sm text-slate-500 my-3'>
         {parseDate(post.data.date)}
         </div>
         <div className='text-slate-900'>

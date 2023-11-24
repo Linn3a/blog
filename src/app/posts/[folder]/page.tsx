@@ -13,7 +13,7 @@ const Folder = (props: any) => {
     const folderName = props.params.folder;
     const posts = getPostMetadataByFolder(folderName)
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <div className='p-6 md:p-0 grid grid-cols-1 md:grid-cols-2 gap-6'>
             {
                 posts.map((post) => {
                     return (
