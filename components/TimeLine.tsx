@@ -85,6 +85,9 @@ const  TimeLine = (props:{
   
 
         <div className="flex flex-col items-center justify-center mb-20">
+            <div className="w-5/6 m-auto text-gray-600 text-2xl mt-8 mb-2 self-start">
+            📆 TimeLine 
+            </div>
             {events?.map(([month, event]) => 
 
             (<section className="w-5/6">
