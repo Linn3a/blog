@@ -10,7 +10,14 @@ const PostPreview = (props: postMetadata) => {
           <Link href={`/posts/${props.folder}/${props.slug}`}>
           <h2 className="font-bold text-xl text-sky-900 my-3 hover:underline">{props.title}</h2>
           </Link>
+          <div className="mb-6 mt-8">
+            🏷️ {props.tags.map(tag => (
+              <div className="rounded-md mx-1 px-2 py-1 my-1 text-sky-900 bg-sky-100 text-sm hover:underline inline-block">#{tag}</div>
+            ))}
+          </div>
           <p className="text-slate-700">{props.subtitle}</p>
+
+          
           
         </div>
     )
