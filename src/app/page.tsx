@@ -1,9 +1,5 @@
-import Link from 'next/link'
 import {getAllPostMetadata} from '../../components/getPostMetadata'
-import PostPreview from '../../components/PostPreview'
-import { postMetadata } from '../../components/postMetadata'
 import TimeLine from '../../components/TimeLine'
-import { GithubOutlined } from '@ant-design/icons'
 
 export default function Home() {
   const postData = getAllPostMetadata()

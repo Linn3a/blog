@@ -34,7 +34,7 @@
     }
     .timeline-title {
         @apply
-        text-3xl 
+        text-2xl 
         text-gray-600
         font-bold
         mb-4

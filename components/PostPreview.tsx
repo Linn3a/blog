@@ -4,7 +4,7 @@ import { postMetadata } from "./postMetadata"
 const PostPreview = (props: postMetadata) => {
   
     return (
-        <div className="border border-slate-200 p-6 rounded-lg bg-sky-50 shadow-sm">
+        <div className="border border-slate-200 p-6 rounded-lg bg-sky-50 shadow-sm hover:-translate-x-1 hover:-translate-y-1 hover:shadow-md">
           <p className="text-sm text-slate-400">{props.date}</p>
 
           <Link href={`/posts/${props.folder}/${props.slug}`}>
@@ -12,7 +12,7 @@ const PostPreview = (props: postMetadata) => {
           </Link>
           <div className="mb-6 mt-8">
             🏷️ {props.tags.map(tag => (
-              <div className="rounded-md mx-1 px-2 py-1 my-1 text-sky-900 bg-sky-100 text-sm hover:underline inline-block">#{tag}</div>
+              <div className="rounded-md mx-1 px-2 py-1 my-1 text-sky-900 bg-sky-100 text-sm inline-block">#{tag}</div>
             ))}
           </div>
           <p className="text-slate-700">{props.subtitle}</p>
