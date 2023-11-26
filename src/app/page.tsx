@@ -14,7 +14,7 @@ export default function Home() {
     <div className='w-full
     '>
       <div className='w-5/6 m-auto '>
-        <div className='text-3xl font-bold mt-6 mb-8'>
+        <div className='text-4xl font-bold mt-6 mb-8'>
       👋 Welcome to Linnea's Blog
       </div>  
       <div className='text-lg text-gray-600 m-4'>
