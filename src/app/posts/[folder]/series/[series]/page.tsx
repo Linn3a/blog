@@ -46,7 +46,7 @@ const SeriesPage = (props: any) => {
                 <Series se={se} isCurrent={se.index==seriesIndex}/>
             )) }
             </div>
-        <div className='p-6 md:p-0 grid grid-cols-2 lg:grid-cols-3 gap-6'>
+        <div className='p-6 md:p-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
             {
                 posts.map((post) => {
                     return (
