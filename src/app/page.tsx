@@ -18,7 +18,7 @@ export default function Home() {
       👋 Welcome to Linnea's Blog
       </div>  
       <div className='text-lg text-gray-600 m-4'>
-      This is Linnea.  I study computer science💻 at Fudan University. I'm documenting my learning notes in this blog.
+      This is Linnea.  I study computer science💻 at Fudan University and I'm documenting my learning notes in this blog.
         </div>
     </div>
     
