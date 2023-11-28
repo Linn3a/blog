@@ -101,7 +101,7 @@ const  TimeLine = (props:{
                     <div className="relative">
                         {subevent.link == ""? (
                         <div className="dot"></div>):
-                        (<Link href={subevent.link} className="dot"/>)}
+                        (<Link href={subevent.link} className="post"/>)}
                 
                         <div className="pl-10">
                             <span className="timeline-date">{subevent.date}</span>

@@ -17,15 +17,24 @@
          ml-3 mt-3 py-16
          space-y-14
     }
-    .dot {
+    .post {
         @apply
         absolute top-5 -left-3.5
-        bg-blue-400
+        bg-rose-200
         h-6 w-6
         rounded-full
         border-4
         border-white
-        hover:ring-2 ring-blue-400
+        hover:ring-2 ring-rose-100
+    }
+    .dot {
+        @apply
+        absolute top-5 -left-3.5
+        bg-indigo-200
+        h-6 w-6
+        rounded-full
+        border-4
+        border-white
     }
     .timeline-date {
         @apply
