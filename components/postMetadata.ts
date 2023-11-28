@@ -6,4 +6,6 @@ export interface postMetadata {
     toc: string;
     slug: string;
     folder: string;
+    series: number;
+    cover: string;
 }

@@ -69,6 +69,8 @@ export const getAllPostMetadata = ():postMetadata[] => {
         toc: toc,
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),
         folder: subfolder,
+        series: matterResult.data.series,
+        cover: matterResult.data.cover || "/images/defaultCover.jpg",
       })
     })  
 })
@@ -97,6 +99,8 @@ export const getPostMetadataByFolder = (folder:string):postMetadata[] => {
         toc: toc,
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),
         folder: folder,
+        series: matterResult.data.series,
+        cover: matterResult.data.cover || "/images/defaultCover.jpg",
       }
     })
     return posts;

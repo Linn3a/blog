@@ -3,6 +3,7 @@ title: Somthing about LoRA
 subtitle: 关于LoRA的简单总结
 date: 2023-11-11 21:30:00
 tags: [dl] 
+series: -1
 ---
 
 > [!summary] 总结

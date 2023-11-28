@@ -3,6 +3,8 @@ title: 我做prompt engineer那些年
 subtitle: GPT时代必备的prompt技巧 😎
 date: 2023-11-13 23:39:00
 tags: [dl]
+series: -1
+
 ---
 
 > [!summary] 总结

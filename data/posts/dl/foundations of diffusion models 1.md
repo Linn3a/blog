@@ -3,6 +3,7 @@ title: 傻子也能看懂的Diffusion Models数学基础(1)
 subtitle: 数学苦手博主的匠心之作😼 我都能懂相信你也行🤲
 date: 2023-11-23 22:00:00
 tags: [diffusion model, generative model, deep learning]
+series: 0
 ---
 
 > [!abstract] 总结

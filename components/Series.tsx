@@ -1,0 +1,36 @@
+import Link from "next/link"
+import { series } from "./getSeries";
+
+
+
+const Series = (props: {
+  se:series,
+  isCurrent:boolean
+}) => {
+  if (props.isCurrent) {
+    return (
+      <div className="p-1 rounded-lg bg-sky-900 text-zinc-50 inline-block mx-2">
+
+        <Link href={`/posts/${props.se.folder}/series/${props.se.url}`}>
+        <h2 className="font-bold text-md hover:underline">{props.se.name}</h2>
+        </Link>
+        
+      </div>
+    )
+  } else {
+    return (
+      <div className="p-1 rounded-lg
+      text-slate-400
+        inline-block
+        mx-2">
+
+          <Link href={`/posts/${props.se.folder}/series/${props.se.url}`}>
+          <h2 className="font-bold text-md hover:underline">{props.se.name}</h2>
+          </Link>
+          
+        </div>
+    )
+  }
+}
+
+export default Series;
