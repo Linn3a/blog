@@ -1,3 +1,4 @@
+import AllSeries from "../../../../../../components/AllSeries";
 import PostPreview from "../../../../../../components/PostPreview";
 import Series from "../../../../../../components/Series";
 import { getAllPostMetadata, getPostMetadataByFolder } from "../../../../../../components/getPostMetadata";
@@ -42,6 +43,7 @@ const SeriesPage = (props: any) => {
     return (
         <div>
             <div className='mb-4'>
+                <AllSeries folder={folder} isRoot={false}/>
             {Currentseries?.map(se => (
                 <Series se={se} isCurrent={se.index==seriesIndex}/>
             )) }

@@ -2,6 +2,7 @@ import PostPreview from '../../../../components/PostPreview';
 import {getAllPostMetadata, getPostMetadataByFolder} from '../../../../components/getPostMetadata';
 import { getSeriesByFolder } from '../../../../components/getSeries';
 import Series from '../../../../components/Series';
+import AllSeries from '../../../../components/AllSeries';
 
 export async function generateStaticParams() {
     const posts = getAllPostMetadata();
@@ -18,6 +19,8 @@ const Folder = (props: any) => {
     return (
         <div>
             <div className='mb-4'>
+            <AllSeries folder={folderName} isRoot={true}/>
+
             {series.map(se => (
                 <Series se={se} isCurrent={false}/>
             )) }
