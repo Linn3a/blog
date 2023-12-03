@@ -22,7 +22,7 @@ export default function RootLayout({
     <div className='flex flex-row text-lg space-x-10'>
    <Link href='/posts/dl' className='flex flex-row'>深度学习<p className='hidden md:block'>🤗</p></Link>
    <Link href='/posts/dev' className='flex flex-row'>开发<p className='hidden md:block'>👩‍💻</p></Link>
-   <Link href="/friend" className='flex flex-row'>友链<p className='hidden md:block'>😚</p></Link>
+   <Link href="/friend" className='flex flex-row'>友链<p className='hidden md:block'>🤝</p></Link>
     </div>
     </header>
   )

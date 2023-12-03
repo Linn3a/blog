@@ -62,7 +62,7 @@ const parseTimeLineData = () => {
         "12": "DECEMBER",
     }
 
-    return ret.map(([month, events]) => {
+    ret = ret.map(([month, events]) => {
         // (monthMap[month.substring(5,7)] + " " + month.substring(0,4))
 
         return [monthMap[month.substring(5,7)] + " " + month.substring(0,4),
@@ -73,6 +73,11 @@ const parseTimeLineData = () => {
         })]
            
         }) as [string, event[]][]
+    return ret.sort((a, b) => {
+        const aDate = new Date(a[1][0].date)
+        const bDate = new Date(b[1][0].date)
+        return - aDate.getTime() + bDate.getTime()
+    })
 }
 
 
@@ -80,6 +85,8 @@ const  TimeLine = (props:{
     posts:postMetadata[]}) => {
      
         const events = parseTimeLineData();
+        console.log(events);
+        
     
     return (
   
