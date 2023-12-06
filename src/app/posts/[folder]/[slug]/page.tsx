@@ -101,7 +101,7 @@ const Post = async (props:any) => {
         </div>
         <div className='w-4/5 mx-auto mt-4 grid grid-cols-1 md:grid-cols-2 gap-6'>
             
-            {prev && <PrevNext post={prev} isPrev={true}/>}
+            {prev? <PrevNext post={prev} isPrev={true}/>: <div></div>}
             {next && <PrevNext post={next} isPrev={false}/>}
 
         </div>
