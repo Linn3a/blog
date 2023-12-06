@@ -1,5 +1,5 @@
 import Markdown from 'react-markdown';
-import {getAllPostMetadata,getPost} from '../../../../../components/getPostMetadata';
+import {getAllPostMetadata,getPost, getPostMetadataByFolder} from '../../../../../components/getPostMetadata';
 import { parseDate } from '../../../../../components/parseDate';
 import rehypeHighlight from 'rehype-highlight';
 import remarkMath from 'remark-math';
@@ -9,6 +9,8 @@ import remarkGfm from 'remark-gfm'
 import remarkCallout from 'remark-callout';
 
 import './rainbow.css';
+import PrevNext from '../../../../../components/PrevNext';
+import PostPreview from '../../../../../components/PostPreview';
 
 export async function generateStaticParams() {
       const posts = getAllPostMetadata();
@@ -24,7 +26,12 @@ const Post = async (props:any) => {
     const subfolder = props.params.folder;
     const slug = props.params.slug;
     const post = getPost(subfolder, slug);
-    
+    const posts = getPostMetadataByFolder(subfolder).sort((a,b) => a.date < b.date ? 1 : -1);
+    const index = posts.findIndex((post) => post.slug === slug);
+    const prev = index < posts.length - 1? posts[index + 1] : null;
+    const next = index > 0 ? posts[index - 1]: null;
+
+
     return (
         <div>
         <head>
@@ -91,6 +98,12 @@ const Post = async (props:any) => {
           >{post.content}</Markdown>
 
             </article>
+        </div>
+        <div className='w-4/5 mx-auto mt-4 grid grid-cols-1 md:grid-cols-2 gap-6'>
+            
+            {prev && <PrevNext post={prev} isPrev={true}/>}
+            {next && <PrevNext post={next} isPrev={false}/>}
+
         </div>
         </div>
     )
