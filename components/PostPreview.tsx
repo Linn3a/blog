@@ -10,7 +10,7 @@ const PostPreview = (props: postMetadata) => {
           <img  
             src={props.cover}
             alt={props.title}
-            className="rounded-t-lg "
+            className="rounded-t-lg w-full"
           />
           </Link>
 
