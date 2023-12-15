@@ -1,5 +1,5 @@
 ---
-title: Somthing about LoRA
+title: LoRA
 subtitle: 关于LoRA的简单总结
 date: 2023-11-11 21:30:00
 tags: [dl] 
