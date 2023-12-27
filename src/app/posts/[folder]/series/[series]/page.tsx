@@ -29,16 +29,20 @@ const SeriesPage = (props: any) => {
     
     const folder = props.params?.folder
     const series = props.params?.series
-
-    const seriesIndex = getSeriesByFolder(folder).findIndex((se) => {
+    
+    const seriesIndex = getSeriesByFolder(folder).find((se) => {
+        
         return se.url == series
-    })
+    })?.index
     
     const Currentseries = getSeriesByFolder(folder)
-
+    
     const posts = getPostMetadataByFolder(folder).filter((post) => {
-        return post.series == seriesIndex
+        
+        return post.series == seriesIndex            
+        
     })
+    
     
     return (
         <div>
