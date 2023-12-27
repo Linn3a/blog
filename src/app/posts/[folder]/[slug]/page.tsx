@@ -59,7 +59,7 @@ const Post = async (props:any) => {
             remarkPlugins={[remarkGfm]}>{post.toc}</Markdown>
             </article>
 
-            <article className="prose w-11/12 lg:w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base prose-blockquote:not-italic prose-blockquote:text-slate-700 prose-quoteless call">
+            <article className="prose w-11/12 lg:w-2/3 max-w-none lg:prose-base mx-auto prose-pre:text-base prose-blockquote:not-italic prose-blockquote:text-slate-700 prose-quoteless call hl">
            <Markdown
            components={{
             h1(props) {
@@ -87,6 +87,7 @@ const Post = async (props:any) => {
                 return <h6 id={children?.toString().toLowerCase().replaceAll(" ","-")} {...props} />
             },
             }}
+             /* 搜索== ==包起来的文本，变为高亮 */
            remarkPlugins={[remarkMath,remarkGfm,remarkCallout]}
            rehypePlugins={[
             rehypeKatex,
@@ -95,7 +96,9 @@ const Post = async (props:any) => {
         ]}
         key="content"
     
-          >{post.content}</Markdown>
+          >
+          
+            {post.content.replaceAll(/==(.+?)==/g,`<mark>$1</mark>`)}</Markdown>
 
             </article>
         </div>

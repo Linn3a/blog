@@ -16,5 +16,11 @@
     "url":"dev",
     "folder":"dev",
     "subtitle": "一些开发中的问题"  
+},{
+    "index": 3,
+    "name":"summary",
+    "url":"sum",
+    "folder":"dev",
+    "subtitle":"学习过程中的一些总结"
 }
 ]
