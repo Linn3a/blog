@@ -11,4 +11,5 @@ I love full moon because I'm born in a full moon night. 🌝
 ## Coming 📅
 - [ ] publish some articles about RL and generative model 🤖
 - [ ] publish some English articles 😼
+- [ ] add a profile page 👩‍💻
 - [ ] add 3D animation 💞
