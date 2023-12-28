@@ -103,5 +103,7 @@ export const getPostMetadataByFolder = (folder:string):postMetadata[] => {
         cover: matterResult.data.cover || "/images/defaultCover.jpg",
       }
     })
-    return posts;
+    return posts.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    });
 }
