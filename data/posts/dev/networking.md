@@ -1,5 +1,5 @@
 ---
-title: 计算机网络总结
+title: summary for networking 🌐
 subtitle: 悄悄地发一下计网总结 🫣
 date: 2023-12-27 11:33:00
 tags: [dev,专业课,计算机网络, summary]
