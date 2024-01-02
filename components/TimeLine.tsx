@@ -10,6 +10,7 @@ interface event {
     title: string,
     content: string,
     link: string,
+    color: string,
 }
 
 const parseTimeLineData = () => {
@@ -30,17 +31,24 @@ const parseTimeLineData = () => {
     }, {} as {[key:string]:event[]})
 
     // 把博客的数据也加进去
+    const folderColor = {
+        "dev": "rose",
+        "dl":"orange",
+    }
+    folderColor["dev"]
     const postData = getAllPostMetadata()
     postData.forEach((post) => {
         const month = post.date.split(" ")[0].substring(0,7)
         if (!eventsByMonth[month]) {
             eventsByMonth[month] = []
         }
+        
         eventsByMonth[month].push({
             date: post.date,
-            title: `发布博客：${post.title}`,
+            title: `${post.title}`,
             content: post.subtitle,
             link: `/posts/${post.folder}/${post.slug}`,
+            color: folderColor[post.folder.toString()],
         })
     })
 
@@ -85,7 +93,6 @@ const  TimeLine = (props:{
     posts:postMetadata[]}) => {
      
         const events = parseTimeLineData();
-        console.log(events);
         
     
     return (
@@ -107,12 +114,12 @@ const  TimeLine = (props:{
                 {event.map((subevent:event) => (
                     <div className="relative">
                         {subevent.link == ""? (
-                        <div className="dot"></div>):
-                        (<Link href={subevent.link} className="post"/>)}
-                
+                        <div className={`dot bg-${subevent.color}-200`}></div>): subevent.color == `rose`?
+                        (<Link href={subevent.link} className={` bg-rose-50 post hover:ring-2 ring-rose-100`}></Link>)
+                         : (<Link href={subevent.link} className={`bg-orange-100 post hover:ring-2 ring-orange-100`}></Link>)}
                         <div className="pl-10">
                             <span className="timeline-date">{subevent.date}</span>
-                            <h3 className="timeline-title">{subevent.title}</h3>
+                            <h3 className="timeline-title"> {subevent.title}</h3>
                             <p className="timeline-content">
                                 {subevent.content}
                                 </p>
