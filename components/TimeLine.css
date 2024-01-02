@@ -20,12 +20,10 @@
     .post {
         @apply
         absolute top-5 -left-3.5
-        bg-rose-200
         h-6 w-6
         rounded-full
         border-4
         border-white
-        hover:ring-2 ring-rose-100
     }
     .dot {
         @apply
