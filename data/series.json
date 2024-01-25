@@ -22,5 +22,17 @@
     "url":"sum",
     "folder":"dev",
     "subtitle":"学习过程中的一些总结"
+}, {
+    "index":4,
+    "name":"python",
+    "url":"python",
+    "folder":"dev",
+    "subtitle":"Python"
+}, {
+    "index":5,
+    "name":"jax",
+    "url":"jax",
+    "folder":"dl",
+    "subtitle":"Jax"
 }
 ]

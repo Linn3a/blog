@@ -42,13 +42,15 @@ const parseTimeLineData = () => {
         if (!eventsByMonth[month]) {
             eventsByMonth[month] = []
         }
-        
+
+        const key = post.folder as keyof typeof folderColor;
+
         eventsByMonth[month].push({
             date: post.date,
             title: `${post.title}`,
             content: post.subtitle,
             link: `/posts/${post.folder}/${post.slug}`,
-            color: folderColor[post.folder.toString()],
+            color: folderColor[key].toString(),
         })
     })
 
