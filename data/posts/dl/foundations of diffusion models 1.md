@@ -66,9 +66,16 @@ $x_t=\sqrt{\overline{\alpha_t}}x_0+\sqrt{1-\overline{\alpha_t}}\epsilon$
 
 所以服从的分布是
 
+
 $q(x_t|x_0)=\mathcal{N}(x_t;\sqrt{\overline{\alpha_t}}x_0,\sqrt{1-\overline{\alpha_t}}I)$
 
 ## 反向过程
+
+先推导优化目标，由此确定反向过程的损失函数
+
+### 优化目标
+
+
 
 反向过程是给定$x_t$，预测$x_{t-1}$
 
