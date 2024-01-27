@@ -88,7 +88,7 @@ export const getPostMetadataByFolder = (folder:string):postMetadata[] => {
   const posts = markdownFiles.map((fileName) => {
     const fileContents = fs.readFileSync(`${_folder}${fileName}`, "utf-8")
     const matterResult = matter(fileContents)
-    console.log("date",matterResult.data.date)
+
     const toc = genToc(matterResult.content);
   
       return {
