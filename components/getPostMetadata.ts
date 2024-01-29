@@ -70,7 +70,7 @@ export const getAllPostMetadata = ():postMetadata[] => {
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),
         folder: subfolder,
         series: matterResult.data.series,
-        cover: matterResult.data.cover || "/images/defaultCover.jpg",
+        cover: matterResult.data.cover || "/blog/images/defaultCover.jpg",
       })
     })  
 })
@@ -100,7 +100,7 @@ export const getPostMetadataByFolder = (folder:string):postMetadata[] => {
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),
         folder: folder,
         series: matterResult.data.series,
-        cover: matterResult.data.cover || "/images/defaultCover.jpg",
+        cover: matterResult.data.cover || "/blog/images/defaultCover.jpg",
       }
     })
     return posts.sort((a, b) => {

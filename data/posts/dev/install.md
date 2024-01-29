@@ -4,7 +4,7 @@ subtitle: 在ubuntu安装nodejs
 date: 2023-12-09 11:33:00
 tags: [dev]
 series: 2
-cover: /images/node.png
+cover: /blog/images/node.png
 ---
 
 > [!abstract] abstract

@@ -4,7 +4,7 @@ subtitle: 终于考完，一份简单的操作系统总结。
 date: 2023-12-28 12:00:00
 tags: [dev,专业课,操作系统, summary]
 series: 3
-cover: /images/os.png
+cover: /blog/images/os.png
 ---
 
 > [!abstract] abstract
@@ -23,9 +23,9 @@ cover: /images/os.png
 - 进程模型
 
   - 5-state
-    - ![img](/images/os_state1.png)
+    - ![img](/blog/images/os_state1.png)
   - 增加挂起态 被移动到辅存的进程
-    - ![img](/images/os_state2.png)
+    - ![img](/blog/images/os_state2.png)
   - 进程描述符/进程控制块 pcb
     - 组合起来叫 进程表
     - 包含
@@ -172,7 +172,7 @@ cover: /images/os.png
   
     - 理发店问题
   
-      - ![img](/images/os_barber.png)
+      - ![img](/blog/images/os_barber.png)
   
       - 关键的问题是要拿到当前处理的客户的编号，finish要和对应客户对应 做法是用一个长度为3的公共队列表示chair，客户入队，理发师出队
   
@@ -434,7 +434,7 @@ cover: /images/os.png
       - 归一化周转时间 Normalized Turnaround Time
         - 周转时间/服务时间
   - 短程调度算法 ⭐
-    - ![image-20231224174850238](/images/image-20231224174850238.png)
+    - ![image-20231224174850238](/blog/images/image-20231224174850238.png)
     - 先来先服务 FIFO/FCFS
       - 对长进程效果更好
     - 轮转调度 是抢占式的（在分片末尾抢占）
@@ -462,7 +462,7 @@ cover: /images/os.png
         - 时间片多的进程优先级会低 每个队列之间采用FCFS
     - 公平调度 fair-share scheduling
       - 按用户组分配资源
-    - ![img](/images/os_sche.png)
+    - ![img](/blog/images/os_sche.png)
 
 ## 内存 
 
@@ -548,7 +548,7 @@ cover: /images/os.png
     - 指明是否在主存中 （present/resident bit）
     - 一致性 modified/dirty bit
     - LRU标识位 最近是否访问 use/reference bit
-    - ![image-20231227134408548](/images/image-20231227134408548.png)
+    - ![image-20231227134408548](/blog/images/image-20231227134408548.png)
   - 特殊页表的PTE
     - 多级页表
     - 反向页表 
@@ -756,7 +756,7 @@ cover: /images/os.png
 
   - 分区
 
-    - ![img](/images/os_file.png)
+    - ![img](/blog/images/os_file.png)
     - MBR 磁盘启动块 
     - 磁盘会划分出很多分区，一个分区是一个文件系统
     - 分区内部有data和metadata（superblock中） freespace 是存储空闲位置的
@@ -782,7 +782,7 @@ cover: /images/os.png
     - 访问控制
       - 用户，文件，权限类型
       - domain 对象和权限的二元组的集合
-      - ![img](/images/os_protect.png)
+      - ![img](/blog/images/os_protect.png)
       - 很多都为空 所以退化成 
         - capability list 按行
         - Access control list 按列
@@ -861,7 +861,7 @@ cover: /images/os.png
 - buffer
   - 提前读 滞后写
   - 单缓冲区
-    - ![img](/images/1702534239833-df8f879e-bf5a-4755-a17c-8a6145dddb47.png)
+    - ![img](/blog/images/1702534239833-df8f879e-bf5a-4755-a17c-8a6145dddb47.png)
     - 平均 $max(C,T)+M$ 所有的+$C_n$
   - 双缓冲区 缓冲区可以直接映射到data，不用move
     - 平均 $max(T,C)$ 总$T_1+C_{10}+10\times max(T,C)$
@@ -876,7 +876,7 @@ cover: /images/os.png
     - 开启一个后台运行的守护进程
 - 磁盘
   - 数据组织
-    - ![img](/images/os_disk.png)
+    - ![img](/blog/images/os_disk.png)
     - 盘片 磁道 柱面 扇区 
   - 读写过程
     - 磁头径向伸缩 定位到磁道 寻道时间
@@ -899,4 +899,4 @@ cover: /images/os.png
         - n=1 fifo
       - FSCAN
         - 两个队列 一个处理请求 一个接收请求
-    - ![img](/images/os_disk_sche.png)
+    - ![img](/blog/images/os_disk_sche.png)
