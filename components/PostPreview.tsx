@@ -23,7 +23,7 @@ const PostPreview = (props: postMetadata) => {
               <div className="rounded-md mx-1 px-2 py-1 my-1 text-sky-900 bg-sky-100 text-sm inline-block">#{tag}</div>
             ))}
           </div>
-          <p className="text-slate-700">{props.subtitle}</p>
+          <p className="text-slate-700 mb-2">{props.subtitle}</p>
           <p className="text-sm text-slate-400">{props.date}</p>
 
           </div>

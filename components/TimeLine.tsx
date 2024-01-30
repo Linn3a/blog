@@ -120,7 +120,7 @@ const  TimeLine = (props:{
                         (<Link href={subevent.link} className={` bg-rose-50 post hover:ring-2 ring-rose-100`}></Link>)
                          : (<Link href={subevent.link} className={`bg-orange-100 post hover:ring-2 ring-orange-100`}></Link>)}
                         <div className="pl-10">
-                            <span className="timeline-date">{subevent.date}</span>
+                            <span className="timeline-date">{subevent.date.substring(0,10)}</span>
                             <h3 className="timeline-title"> {subevent.title}</h3>
                             <p className="timeline-content">
                                 {subevent.content}
