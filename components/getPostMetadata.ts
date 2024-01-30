@@ -64,7 +64,7 @@ export const getAllPostMetadata = ():postMetadata[] => {
         {
         title: matterResult.data.title,
         subtitle: matterResult.data.subtitle,
-        date: `${parseDate(matterResult.data.date).substring(0,10)}`,
+        date: `${parseDate(matterResult.data.date)}`,
         tags: matterResult.data.tags,
         toc: toc,
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),
@@ -94,7 +94,7 @@ export const getPostMetadataByFolder = (folder:string):postMetadata[] => {
       return {
         title: matterResult.data.title,
         subtitle: matterResult.data.subtitle,
-        date: `${parseDate(matterResult.data.date).substring(0,10)}`,
+        date: `${parseDate(matterResult.data.date)}`,
         tags: matterResult.data.tags,
         toc: toc,
         slug: fileName.replace(".md", "").replaceAll(" ", "_"),
