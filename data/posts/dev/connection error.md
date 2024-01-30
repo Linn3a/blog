@@ -6,6 +6,8 @@ tags: [dev, git]
 series: 2
 ---
 
+## 问题
+
 记一次报错信息:
 
 ```
@@ -15,7 +17,9 @@ fatal: Could not read from remote repository.
 Please make sure you have the correct access rights and the repository exists.
 ```
 
-解决：全知全能的Stackoverflow 🙏（）, [参考链接](https://stackoverflow.com/questions/15589682/ssh-connect-to-host-github-com-port-22-connection-timed-out)
+## 解决
+
+全知全能的Stackoverflow 🙏（）, [参考链接](https://stackoverflow.com/questions/15589682/ssh-connect-to-host-github-com-port-22-connection-timed-out)
 
 在 `~/.ssh/config`文件中添加
 
