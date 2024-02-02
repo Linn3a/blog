@@ -49,3 +49,19 @@ cover: /blog/images/latex.jpg
     \section{不编号的章节标题}
     \end{document}
     ```
+
+# 在论文中添加算法
+
+```latex
+\usepackage{algorithm}
+
+\begin{algorithm}
+    \caption{算法标题}
+    \label{alg:algorithm-label}
+    \begin{algorithmic}[1]
+        \REQUIRE 输入
+        \ENSURE 输出
+        \STATE 算法描述
+    \end{algorithmic}
+\end{algorithm}
+```
