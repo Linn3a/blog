@@ -34,5 +34,11 @@
     "url":"jax",
     "folder":"dl",
     "subtitle":"Jax"
+}, {
+    "index":6,
+    "name":"latex",
+    "url":"latex",
+    "folder":"dev",
+    "subtitle":"latex"
 }
 ]
