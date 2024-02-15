@@ -21,7 +21,7 @@ cover: /blog/images/latex.jpg
 
 ## 不带编号，但上toc
 
-[参考](https://www.latexstudio.net/archives/3602.html) [真正的原创💢](https://liam0205.me/2015/04/10/how-to-list-unnumbered-section-in-the-table-of-contents/)
+[参考](https://www.latexstudio.net/archives/3602.html) [真正的原创 💢](https://liam0205.me/2015/04/10/how-to-list-unnumbered-section-in-the-table-of-contents/)
 
 - 法一： 单独加一行toc
  
@@ -65,3 +65,26 @@ cover: /blog/images/latex.jpg
     \end{algorithmic}
 \end{algorithm}
 ```
+
+# 图片嵌入段落中
+
+```latex
+\begin{wrapfigure}[lineheight]{position}{width}
+  ...
+\end{wrapfigure}
+```
+
+> [!example] 示例
+>
+> 使用方式及示例来自[overleaf 🍃](https://www.overleaf.com/learn/latex/Wrapping_text_around_figures)
+>
+> ```latex
+> \begin{wrapfigure}{r}{0.5\textwidth}
+>   \begin{center}
+>     \includegraphics[width=0.48\textwidth]{birds}
+>   \end{center}
+>   \caption{Birds}
+>  \label{fig:birds}
+> \end{wrapfigure}
+> ```
+>
