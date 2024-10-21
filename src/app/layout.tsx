@@ -6,7 +6,7 @@ import Link from 'next/link'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Linnea\'s blog',
+  title: 'Linnea\'s blog ',
   description: '',
 }
 
@@ -18,11 +18,11 @@ export default function RootLayout({
 
   const header = (
     <header className='border-b px-2 lg:p-1 border-gray-200 h-12 mb-5 flex flex-row items-center justify-between'>
-   <Link href='/' className='text-xl flex flex-row' >Linnea<p className='hidden md:block'>'s Blog✍️</p></Link>
+   <Link href='/' className='text-xl flex flex-row' >Linnea<p className='hidden md:block'>'s Blog 🍞</p></Link>
     <div className='flex flex-row text-lg space-x-10'>
-   <Link href='/posts/dl' className='flex flex-row'>深度学习<p className='hidden md:block'>🤗</p></Link>
-   <Link href='/posts/dev' className='flex flex-row'>开发<p className='hidden md:block'>👩‍💻</p></Link>
-   <Link href="/friend" className='flex flex-row'>友链<p className='hidden md:block'>🤝</p></Link>
+   <Link href='/posts/dl' className='flex flex-row'>DL<p className='hidden md:block'>🤗</p></Link>
+   <Link href='/posts/dev' className='flex flex-row'>Dev<p className='hidden md:block'>👩‍💻</p></Link>
+   <Link href="/friend" className='flex flex-row'>Link<p className='hidden md:block'>🤝</p></Link>
     </div>
     </header>
   )
