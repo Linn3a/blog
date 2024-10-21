@@ -5,7 +5,7 @@ tags: [dl,rl]
 series: 1
 cover: /blog/images/jax.jpg
 ---
-# 02 PPO
+# 👆文详解PPO
 
 ## 01. 重要性采样（Importance Sampling）
 
