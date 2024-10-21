@@ -3,7 +3,7 @@ title: 👆文详解PPO
 date: 2024-10-18 16:26:43
 tags: [dl,rl]
 series: 1
-cover: /blog/images/jax.jpg
+cover: /blog/images/ppo_cover.png
 ---
 # 👆文详解PPO
 
