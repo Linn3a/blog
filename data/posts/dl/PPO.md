@@ -9,7 +9,8 @@ cover: /blog/images/ppo_cover.png
 
 ## 01. 重要性采样（Importance Sampling）
 
-之前的强化学习方法常常采用on-policy方法，为了保证当前学习的agent和探索的agent一致，通常要在每次更新参数后用新的agent再次探索环境，保存数据，以进行下一轮参数更新。
+之前的强化学习方法常常采用on-policy方法，==为了保证当前学习的agent和探索的agent一致，通常要在每次更新参数后用新的agent再次探索环境，保存数据，以进行下一轮参数更新。==
+
 与之相对的，我们可以用off-policy方法来学习策略。显著的好处是，可以用初始的agent探索环境，尽量**一次性**收集足够多的交互数据用于学习。
 那么，如何保证旧的交互数据可以服务于新的agent呢？这里需要用到**重要性采样**的思想。
 ### 重要性采样
@@ -26,15 +27,17 @@ $$\mathbb{var}_{x\sim p}[f(x)]=\mathbb E_{x\sim p}[f(x)^2]-(\mathbb E_{x\sim p}[
 
 $$\mathbb{var}_{x\sim q}[f(x)\frac{p(x)}{q(x)}]=\mathbb E_{x\sim q}[(f(x)\frac{p(x)}{q(x)})^2]-(\mathbb E_{x\sim q}[f(x)\frac{p(x)}{q(x)}])^2\\=\mathbb E_{x\sim p}[f(x)^2\frac{p(x)}{q(x)}]-(\mathbb E_{x\sim p}[f(x)])^2$$
 
-两个反差的第一项是不同的 所以如果采样次数过少，由于方差有差别，根据收集到的数据计算的期望可能和真实期望不一致
+两个反差的第一项是不同的 所以如果采样次数过少，==由于方差有差别，采样到的数据计算的期望可能和真实期望不一致==
 
 ### 怎么把重要性采样迁移到强化学习？
 
 策略梯度：
+
 $$\nabla \overline R_{\theta}=\mathbb E_{\tau \sim p_{\theta}(\tau)}[R(\tau)\nabla\log p_{\theta}(\tau)]$$
 
 如果加上重要性采样，参考的agent参数为$\theta'$
 有：
+
 $$\nabla \overline R_{\theta}=\mathbb E_{\tau \sim p_{\theta’}(\tau)}[R(\tau)\frac{p_{\theta}(x)}{p_{\theta'}(x)}\nabla\log p_{\theta}(\tau)]$$
 
 > [!info] 重要性权重
@@ -42,31 +45,42 @@ $$\nabla \overline R_{\theta}=\mathbb E_{\tau \sim p_{\theta’}(\tau)}[R(\tau)\
 > 所以要乘$\frac{p_{\theta}(x)}{p_{\theta'}(x)}$
 
 实践中，通常不是用整个trajectory，而是用每一个state-action对来更新权重，即
+
 $$\mathbb E_{(s_t,a_t)\sim \pi_{\theta}}[A^{\theta}(s_t,a_t)\nabla\log p_\theta(a_t|s_t)]$$
+
 用重要性采样：
+
 $$\mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(s_t,a_t)}{p_\theta'(s_t,a_t)}A^{\theta}(s_t,a_t)\nabla\log p_\theta(a_t|s_t)]$$
 
 因为$P_\theta(a_t|a_t)$ 就是policy的输出
-所以用贝叶斯
-$P(s_t,a_t) = p(a_t|s_t)p(s_t)$
+
+所以用贝叶斯$P(s_t,a_t) = p(a_t|s_t)p(s_t)$
+
 所以：
+
 $$\mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)p_\theta(s_t)}{p_{\theta'}(a_t|s_t)p_{\theta'}(s_t)}A^{\theta}(s_t,a_t)\nabla\log p_\theta(a_t|s_t)]$$
 
 因为：
 - 状态通常和动作无关，即为与参数无关
 - 状态的概率难以估计
+
 所以假设 $p_\theta(s_t) = p_{\theta'}(s_t)$，省去这一项
 得到：
+
 $$\mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)}{p_{\theta'}(a_t|s_t)}A^{\theta}(s_t,a_t)\nabla\log p_\theta(a_t|s_t)]$$
 
 用梯度反推目标函数，由于
+
 $$\nabla f(x)=f(x)\nabla\log f(x)$$
+
 把 $\theta'$ 相关的都看作常数，得到目标函数：
+
 $$J_{\theta'}(\theta) = \mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)}{p_{\theta'}(a_t|s_t)}A^{\theta}(s_t,a_t))$$
+
 ## 02. 近端策略优化（PPO）
 
 前面说过了，乘上重要性权重后原来的分布并不是完全等同的。如果两个分布相差过大，或者方差过大，重要性采样的效果就不会很好
-ppo的主要思想就是增加一个约束，以使得两个分布距离不大，很容易想到这里增加的分布是KL散度
+==ppo的主要思想就是增加一个约束，以使得两个分布距离不大，很容易想到这里可以增加一个**KL散度**作为正则项==
 
 > [!info] KL散度
 > KL散度的物理意义：预测分布 与 真实分布的距离
@@ -85,6 +99,7 @@ $$J_{\theta'}(\theta) = \mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a
 $$J_{TRPO}^{\theta'}=\mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)}{p_{\theta'}(a_t|s_t)}A^{\theta}(s_t,a_t)],~KL(\theta,\theta')<\delta$$
 
 但是这种约束在基于梯度的优化方法中是很难处理的
+ 
 
 PPO有两种变种，分别是基于惩罚项的 PPO-Penalty 和基于裁剪的 PPO-Clip
 ### PPO-Penalty
@@ -102,7 +117,9 @@ $$J_{\theta^k}(\theta) \approx \sum\limits_{(s_t,a_t)}\frac{p_\theta(a_t|s_t)}{p
 ### PPO-Clip
 不引入kL散度，而是直接约束重要性权重的值
 裁剪重要性权重，使得
+
 $$1-\epsilon \le \frac{p_{\theta}(a_t|s_t)}{p_{\theta'}(a_t|s_t)}\le 1+\epsilon$$
+
 所以：
 
 $$J_{PPO2}^{\theta^k}=\sum\limits_{(s_t,a_t)}\min(\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)}A^{\theta}(s_t,a_t),clip(\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)},1-\epsilon,1+\epsilon)A^{\theta}(s_t,a_t))$$
