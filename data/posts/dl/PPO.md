@@ -124,3 +124,6 @@ $$1-\epsilon \le \frac{p_{\theta}(a_t|s_t)}{p_{\theta'}(a_t|s_t)}\le 1+\epsilon$
 所以：
 
 $$J_{PPO2}^{\theta^k}=\sum\limits_{(s_t,a_t)}\min(\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)}A^{\theta}(s_t,a_t),clip(\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)},1-\epsilon,1+\epsilon)A^{\theta}(s_t,a_t))$$
+
+## Reference
+[1] Qi Wang, Yiyuan Yang, Ji Jiang，Easy RL: Reinforcement Learning Tutorial，Posts & Telecom Press，https://github.com/datawhalechina/easy-rl, 2022.
