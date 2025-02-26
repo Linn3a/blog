@@ -2,7 +2,10 @@ pre code.hljs {
     display: block;
     overflow-x: auto;
     padding: 1em;
-    font-size: 1em;
+    font-size: 0.8em;
+  }
+  code{
+    font-size: 0.8em !important;
   }
   code.hljs {
     padding: 3px 5px
