@@ -1,129 +1,139 @@
 ---
-title: 👆文详解PPO 
-subtitle: 是的就是你知道的那个PPO！🙌
+title: A Detailed Explanation of PPO -- Part 1 👆
+subtitle: From Policy Gradient to PPO 🙌
 date: 2024-10-18 16:26:43
-tags: [dl,rl]
+tags: [dl, rl]
 series: 1
 cover: /blog/images/ppo_cover.png
 ---
-# 👆文详解PPO
+# A Detailed Explanation of PPO —— Part 1 👆
 
-## 01. 重要性采样（Importance Sampling）
+## 01. Importance Sampling
 
-之前的强化学习方法常常采用on-policy方法，==为了保证当前学习的agent和探索的agent一致，通常要在每次更新参数后用新的agent再次探索环境，保存数据，以进行下一轮参数更新。==
+Previously, reinforcement learning methods often adopted the on-policy approach. ==To ensure that the currently learning agent is consistent with the exploring agent, it is usually necessary to use the new agent to explore the environment again after each parameter update, save the data, and then conduct the next round of parameter updates.==
 
-与之相对的，我们可以用off-policy方法来学习策略。显著的好处是，可以用初始的agent探索环境，尽量**一次性**收集足够多的交互数据用于学习。
-那么，如何保证旧的交互数据可以服务于新的agent呢？这里需要用到**重要性采样**的思想。
-### 重要性采样
+In contrast, we can use the off-policy method to learn the policy. The remarkable advantage is that we can use the initial agent to explore the environment and try to collect enough interaction data for learning **in one go**.
+So, how can we ensure that the old interaction data can serve the new agent? Here, we need to use the idea of **importance sampling**.
 
-假设有分布 $p$, $q$，有期望
+### Importance Sampling
+
+Suppose there are distributions $p$, $q$, and there is an expectation
 
 $$\mathbb E_{x\sim p}[f(x)]=\int f(x)p(x)dx=\int f(x)\frac{p(x)}{q(x)}q(x)\\=\mathbb E_{x\sim q}[f(x)\frac{p(x)}{q(x)}]$$
 
-所以说，只要乘重要性权重$$\frac{p(x)}{q(x)}$$
-就可以用另一个分布的数据计算当前分布下的期望
+So, as long as we multiply by the importance of weight $\frac{p(x)}{q(x)}$, we can calculate the expectation under the current distribution using the data from another distribution.
 
-需要注意的是，乘上重要性权重后，两个分布下的期望保持不变，但是方差不同，有：
+It should be noted that after multiplying by the importance weight, the expectations under the two distributions remain the same, but the variances are different. We have:
+
 $$\mathbb{var}_{x\sim p}[f(x)]=\mathbb E_{x\sim p}[f(x)^2]-(\mathbb E_{x\sim p}[f(x)])^2$$
 
 $$\mathbb{var}_{x\sim q}[f(x)\frac{p(x)}{q(x)}]=\mathbb E_{x\sim q}[(f(x)\frac{p(x)}{q(x)})^2]-(\mathbb E_{x\sim q}[f(x)\frac{p(x)}{q(x)}])^2\\=\mathbb E_{x\sim p}[f(x)^2\frac{p(x)}{q(x)}]-(\mathbb E_{x\sim p}[f(x)])^2$$
 
-两个反差的第一项是不同的 所以如果采样次数过少，==由于方差有差别，采样到的数据计算的期望可能和真实期望不一致==
+The first terms of the two variances are different. So, if the number of samples is too small, ==due to the difference in variances, the expectation calculated from the sampled data may not be consistent with the true expectation==
 
-### 怎么把重要性采样迁移到强化学习？
+### How to Transfer Importance Sampling to Reinforcement Learning?
 
-策略梯度：
+According to Policy gradient:
 
 $$\nabla \overline R_{\theta}=\mathbb E_{\tau \sim p_{\theta}(\tau)}[R(\tau)\nabla\log p_{\theta}(\tau)]$$
 
-如果加上重要性采样，参考的agent参数为$\theta'$
-有：
+If we add importance sampling and the parameters of the reference agent which denoted $\theta'$
+
+We have:
 
 $$\nabla \overline R_{\theta}=\mathbb E_{\tau \sim p_{\theta’}(\tau)}[R(\tau)\frac{p_{\theta}(x)}{p_{\theta'}(x)}\nabla\log p_{\theta}(\tau)]$$
 
-> [!info] 重要性权重
-> 重要性权重是概率分布的比值，和前面期望的角标是对应的
-> 所以要乘$\frac{p_{\theta}(x)}{p_{\theta'}(x)}$
+> [!info] Importance Weight
+> The importance weight is the ratio of probability distributions, and it corresponds to the subscript of the expectation mentioned before.
+> So we need to multiply by $\frac{p_{\theta}(x)}{p_{\theta'}(x)}$
 
-实践中，通常不是用整个trajectory，而是用每一个state-action对来更新权重，即
+In practice, we usually do not use the entire trajectory but update the weight using each state-action pair, that is
 
 $$\mathbb E_{(s_t,a_t)\sim \pi_{\theta}}[A^{\theta}(s_t,a_t)\nabla\log p_\theta(a_t|s_t)]$$
 
-用重要性采样：
+Using importance sampling, this formula is equivalent to:
 
 $$\mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(s_t,a_t)}{p_\theta'(s_t,a_t)}A^{\theta}(s_t,a_t)\nabla\log p_\theta(a_t|s_t)]$$
 
-因为$P_\theta(a_t|a_t)$ 就是policy的输出
+$P_\theta(a_t|a_t)$ is the output of the policy
 
-所以用贝叶斯$P(s_t,a_t) = p(a_t|s_t)p(s_t)$
+According to the Bayes' formula $P(s_t,a_t) = p(a_t|s_t)p(s_t)$
 
-所以：
+So:
 
 $$\mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)p_\theta(s_t)}{p_{\theta'}(a_t|s_t)p_{\theta'}(s_t)}A^{\theta}(s_t,a_t)\nabla\log p_\theta(a_t|s_t)]$$
 
-因为：
-- 状态通常和动作无关，即为与参数无关
-- 状态的概率难以估计
+Because:
 
-所以假设 $p_\theta(s_t) = p_{\theta'}(s_t)$，省去这一项
-得到：
+- The state is usually independent of the action, that is, it is independent of the parameters $\theta$.
+- The probability of the state is difficult to estimate.
+
+So we assume that $p_\theta(s_t) = p_{\theta'}(s_t)$ and omit this term.
+We get:
 
 $$\mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)}{p_{\theta'}(a_t|s_t)}A^{\theta}(s_t,a_t)\nabla\log p_\theta(a_t|s_t)]$$
 
-用梯度反推目标函数，由于
+Using the gradient to infer the objective function, since
 
 $$\nabla f(x)=f(x)\nabla\log f(x)$$
 
-把 $\theta'$ 相关的都看作常数，得到目标函数：
+According to Policy Gradient, the formula above is the gradient of objective function. To infer the objective function, we can take $A^{\theta}(s_t,a_t)$, $p_{\theta'}(a_t|s_t)$ as constants (The value of A^{\theta} is determined by environment). And we can regard $p_{\theta}(a_t|s_t)$ as $f(x)$. We get the objective function:
 
-$$J_{\theta'}(\theta) = \mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)}{p_{\theta'}(a_t|s_t)}A^{\theta}(s_t,a_t))$$
+$$J_{\theta'}(\theta) = \mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)}{p_{\theta'}(a_t|s_t)}A^{\theta}(s_t,a_t)]$$
 
-## 02. 近端策略优化（PPO）
+## 02. Proximal Policy Optimization (PPO)
 
-前面说过了，乘上重要性权重后原来的分布并不是完全等同的。如果两个分布相差过大，或者方差过大，重要性采样的效果就不会很好
-==ppo的主要思想就是增加一个约束，以使得两个分布距离不大，很容易想到这里可以增加一个**KL散度**作为正则项==
+As mentioned before, after multiplying by the importance weight, the original distributions are not completely the same. If the two distributions differ too much or the variance is too large, the effect of importance sampling will not be very good.
+==The main idea of PPO is to add a constraint to make the distance between the two distributions not too large. It is easy to think that we can add a **KL divergence** as a regularization term here==
 
-> [!info] KL散度
-> KL散度的物理意义：预测分布 与 真实分布的距离
-> 
+> [!info] KL Divergence
+> The physical meaning of KL divergence: the distance between the predicted distribution and the true distribution.
+>
 > $$D(p||q)=H(p,q)-H(p)\\=-\sum p(x)\log(q(x)) + \sum p(x)\log (p(x))\\=-\sum p(x)\log \frac{q(x)}{p(x)}$$
-> 
-> 这里用kl散度 而不是直接对参数求正则 原因是衡量的是action的距离，而不是参数的距离
+>
+> The reason we use KL divergence here instead of directly regularizing the parameters is that we are measuring the distance of actions, not the distance of parameters.
 
-加上约束之后：
+After adding the constraint:
+
 $$J_{PPO}^{\theta'}=J^{\theta'}(\theta)-\beta KL(\theta,\theta')$$
 
 $$J_{\theta'}(\theta) = \mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)}{p_{\theta'}(a_t|s_t)}A^{\theta}(s_t,a_t)]$$
 
-思路相同的还有一篇文章：信任区域策略优化（trust region policy optimization, TRPO）
+There is also an article with a similar idea: **Trust Region Policy Optimization (TRPO)**. The objectve function of TRPO is:
 
 $$J_{TRPO}^{\theta'}=\mathbb E_{(s_t,a_t)\sim \pi_{\theta'}}[\frac{p_\theta(a_t|s_t)}{p_{\theta'}(a_t|s_t)}A^{\theta}(s_t,a_t)],~KL(\theta,\theta')<\delta$$
 
-但是这种约束在基于梯度的优化方法中是很难处理的
- 
+However, this kind of constraint is difficult to handle in gradient-based optimization methods. To solve this, there are two variants of PPO, namely PPO-Penalty based on the penalty term and PPO-Clip based on clipping.
 
-PPO有两种变种，分别是基于惩罚项的 PPO-Penalty 和基于裁剪的 PPO-Clip
-### PPO-Penalty
-即：
+###  PPO-Penalty
+
+That is:
 
 $$J_{PPO1}^{\theta^k}=J^{\theta^k}(\theta)-\beta KL(\theta,\theta^k)$$
 
 $$J_{\theta^k}(\theta) \approx \sum\limits_{(s_t,a_t)}\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)}A^{\theta}(s_t,a_t)$$
 
-原论文中 $\beta$ 值是可以修改的 也称为adaptive PPO penalty
+In the original paper, the value of $\beta$ can be modified, and it is also called the adaptive PPO penalty.
 
-若$KL>KL_{max}$  就说明后面这项没有造成什么约束 增大 $\beta$
+If $KL>KL_{max}$, it means that the latter term does not impose much constraint, and we increase $\beta$ .
 
-若$KL<KL_{max}$  就说明后面这项没有造成的约束过大 减小 $\beta$
+If $KL<KL_{max}$, it means that the constraint imposed by the latter term is too large, and we decrease $\beta$.
+
 ### PPO-Clip
-不引入kL散度，而是直接约束重要性权重的值
-裁剪重要性权重，使得
+
+Instead of introducing KL divergence, we directly constrain the value of the importance weight.
+Clip the importance weight so that
 
 $$1-\epsilon \le \frac{p_{\theta}(a_t|s_t)}{p_{\theta'}(a_t|s_t)}\le 1+\epsilon$$
 
-所以：
+So:
 
 $$J_{PPO2}^{\theta^k}=\sum\limits_{(s_t,a_t)}\min(\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)}A^{\theta}(s_t,a_t),clip(\frac{p_\theta(a_t|s_t)}{p_{\theta^k}(a_t|s_t)},1-\epsilon,1+\epsilon)A^{\theta}(s_t,a_t))$$
 
+> [!summary] Takeway
+>
+> PPO aims to address the problem of ==importance sampling's ineffectiveness when distributions differ much==. It does so by adding a KL - divergence as a regularization term. There are two PPO variants: PPO - Penalty, which adaptively adjusts the value based on KL - divergence, and PPO - Clip, which directly ==clips the importance weight==.
+
 ## Reference
-[1] Qi Wang, Yiyuan Yang, Ji Jiang，Easy RL: Reinforcement Learning Tutorial，Posts & Telecom Press，https://github.com/datawhalechina/easy-rl, 2022.
+
+[1] Qi Wang, Yiyuan Yang, Ji Jiang，Easy RL: Reinforcement Learning Tutorial，Posts & Telecom Press，<https://github.com/datawhalechina/easy-rl>, 2022.
