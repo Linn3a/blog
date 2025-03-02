@@ -1,5 +1,5 @@
 ---
-title: A Detailed Explanation of PPO -- Part 2 👆
+title: A Detailed Explanation of PPO -- Part 2 ✌️
 subtitle: Determine the advantage estimation method in PPO 🧮
 date: 2025-02-27 16:26:43
 tags: [dl, rl]
