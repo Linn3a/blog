@@ -1,12 +1,12 @@
 ---
-title: A Detailed Explanation of PPO -- Part 2 ✌️
-subtitle: Determine the advantage estimation method in PPO 🧮
+title: Utilizing RL for Post Training Phase of Large Language Models (2)
+subtitle: "A Explanation of Commonly Used Advantage Estimation Method: Generalized Advantage Estimation"
 date: 2025-02-27 16:26:43
 tags: [dl, rl]
 series: 1
 cover: /blog/images/gae_cover.png
 ---
-# A Detailed Explanation of PPO —— Part 2
+# Utilizing RL for Post Training Phase of Large Language Models (2)
 
 ## Preliminaries
 

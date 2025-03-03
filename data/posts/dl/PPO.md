@@ -1,12 +1,13 @@
 ---
-title: A Detailed Explanation of PPO -- Part 1 👆
-subtitle: From Policy Gradient to PPO 🙌
+title:  Utilizing RL for Post Training Phase of Large Language Models (1)
+subtitle: "A Detailed Explanation of PPO: From Policy Gradient to PPO 🙌"
 date: 2024-10-18 16:26:43
 tags: [dl, rl]
 series: 1
 cover: /blog/images/ppo_cover.png
 ---
-# A Detailed Explanation of PPO —— Part 1 👆
+
+#  Utilizing RL for Post Training Phase of Large Language Models (1)
 
 ## 01. Importance Sampling
 
