@@ -1,7 +1,7 @@
 ---
 title: Utilizing RL for Post Training Phase of Large Language Models (3)
 subtitle: "Extension of classic RL Algorithms: REINFORCE++"
-date: 2025-02-28 16:26:43
+date: 2025-03-03 22:26:43
 tags: [dl, rl]
 series: 1
 cover: /blog/images/reinforce_cover.png
